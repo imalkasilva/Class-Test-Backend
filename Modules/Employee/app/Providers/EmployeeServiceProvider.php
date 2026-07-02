@@ -1,0 +1,61 @@
+<?php
+
+namespace Modules\Employee\Providers;
+
+use Illuminate\Console\Scheduling\Schedule;
+use Modules\Employee\Repositaries\EmployeeRepository;
+use Modules\Employee\Repositaries\EmployeeRepositoryInterface;
+use Nwidart\Modules\Support\ModuleServiceProvider;
+
+class EmployeeServiceProvider extends ModuleServiceProvider
+{
+    /**
+     * The name of the module.
+     */
+    protected string $name = 'Employee';
+
+    /**
+     * The lowercase version of the module name.
+     */
+    protected string $nameLower = 'employee';
+
+    /**
+     * Command classes to register.
+     *
+     * @var string[]
+     */
+    // protected array $commands = [];
+
+    /**
+     * Provider classes to register.
+     *
+     * @var string[]
+     */
+    protected array $providers = [
+        EventServiceProvider::class,
+        RouteServiceProvider::class,
+    ];
+
+    /**
+     * Define module schedules.
+     * 
+     * @param $schedule
+     */
+    // protected function configureSchedules(Schedule $schedule): void
+    // {
+    //     $schedule->command('inspire')->hourly();
+    // }
+
+
+//bind the EmployeeRepositoryInterface to EmployeeRepository
+
+    public function register(): void
+{
+    $this->app->bind(
+        EmployeeRepositoryInterface::class,
+        EmployeeRepository::class
+    );
+}
+
+
+}
