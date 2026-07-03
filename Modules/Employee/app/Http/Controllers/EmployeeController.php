@@ -4,6 +4,9 @@ namespace Modules\Employee\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Employee\Http\Requests\StoreEmployeeRequest;
+use Modules\Employee\Http\Requests\UpdateEmployeeRequest;
+use Modules\Employee\Repositaries\EmployeeRepositoryInterface;
 
 class EmployeeController extends Controller
 {
